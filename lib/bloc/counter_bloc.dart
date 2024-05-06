@@ -4,9 +4,11 @@ import 'counter_event.dart';
 class CounterBloc extends Bloc<CounterEvent, int> {
   CounterBloc() : super(0) {
     on<CounterEvent>((event, emit) {
-      // Check the type of event
       if (event == CounterEvent.increment) {
-        emit(state + 1); // Emit new state
+        emit(state + 1);
+      }
+      if (event == CounterEvent.decrement){
+        emit(state - 1);
       }
     });
   }
