@@ -10,7 +10,8 @@ class CountWidget extends StatelessWidget {
       backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text('Counter'),
-        toolbarHeight: 100,
+        titleTextStyle: TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w400),
+        toolbarHeight: 75,
         centerTitle: true,
       ),
       body: Center(
@@ -19,8 +20,16 @@ class CountWidget extends StatelessWidget {
           children: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
+
               children: <Widget>[
+                ElevatedButton(
+                    onPressed: () =>
+                    BlocProvider.of<CounterBloc>(context).add(CounterEvent.decrement),
+                    child: Text("-"),
+                ),
+                SizedBox(width: 16),
                 BlocBuilder<CounterBloc, int>(
+
                   builder: (context, count) {
                     return Text(
                       "$count",
